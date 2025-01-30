@@ -1,6 +1,8 @@
 import React from 'react';
 import FormLogin from './components/Fragments/FormLogin';
 import Loginpage from './pages/LOGIN.JSX';
+import FormRegister from './components/Fragments/FormRegister';
+import RegisterPage from './pages/register';
 
 
 // Komponen berbasis class
@@ -28,7 +30,8 @@ const ButtonCont = () => {
 function App() {
   return (
     <div className='flex justify-center  items-center min-h-screen'>
-     <Loginpage/>
+     <RegisterPage/>
+     
     </div>
   );
 }
