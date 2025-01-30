@@ -9,9 +9,9 @@ import FormLogin from '../components/Fragments/FormLogin'
 
 const Loginpage = () => {
   return (
-    <AuthLayout title="Login">
+    <AuthLayout title="Login" type="login">
         <FormLogin/>
-        <p className='text-sm mt-5 text-center'>Don't have am account? <Link to="/register" className=' font-bold text-blue-600'>Sign ini</Link></p>
+       
     </AuthLayout>
   )
 }
