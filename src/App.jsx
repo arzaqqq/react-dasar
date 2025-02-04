@@ -1,3 +1,5 @@
+//SEBENARNAY HALAAKN INI TIDAK DIPAAKI LAGI KARENA SUDAH KE MAIN LANGSUNG
+
 import React from 'react';
 import FormLogin from './components/Fragments/FormLogin';
 import Loginpage from './pages/LOGIN.JSX';

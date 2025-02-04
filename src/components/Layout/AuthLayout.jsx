@@ -1,3 +1,5 @@
+// ini bagain dari folder layout yang mana letah di folder pages
+
 import React from 'react'
 import { Link } from 'react-router-dom';
 

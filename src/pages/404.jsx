@@ -1,3 +1,5 @@
+// INI COMPONENT UNTUK HALAKMAN TIDAK DITEMUKAN ATAU ERROR
+
 import { useRouteError } from "react-router-dom";
 import React from 'react'
 
