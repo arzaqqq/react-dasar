@@ -1,11 +1,15 @@
 import React from 'react'
 
-const products = () => {
+import Button from '../components/Elements/Button/Index';
+import ButtonFunction from '../components/Elements/Button/Index';
+import CardProduct from '../components/Fragments/CardProduct';
+
+const ProductPages = () => {
   return (
-    <div>
-      
+    <div className='flex justify-center py-5'>
+      <CardProduct/>
     </div>
   )
 }
 
-export default products
+export default ProductPages
