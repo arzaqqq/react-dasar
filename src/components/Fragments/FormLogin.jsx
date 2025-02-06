@@ -6,11 +6,20 @@ import ButtonFunction from '../Elements/Button/Index';
 import InputForm from '../Elements/Input';
 
 const FormLogin = () => {
+  const handleLogin = (event) => {
+    // AGAR preventDefault HALAMAN TIDAK TERREFRESH
+    event.preventDefault();
+    console.log("login");
+  }
+
   return (
-    <form action="">
+    <form action="" onSubmit={handleLogin}>
          <InputForm label="email" type="email" placeholder="email@gmail.com" name="email" />
           <InputForm label="form" type="password" placeholder="masukan password" name="password"></InputForm>
-          <ButtonFunction variant='bg-blue-700 w-full'>Login</ButtonFunction>
+          <ButtonFunction 
+              variant='bg-blue-700 w-full'
+              type='submit'
+             >Login</ButtonFunction>
         </form>
   )
 }

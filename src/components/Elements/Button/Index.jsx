@@ -2,9 +2,17 @@ import React from "react";
 
 // Komponen function dengan props
 function ButtonFunction(props) {
-    const {children = 'hai', variant = "bg-yellow-500" } = props;
+    const {
+      children = 'hai', 
+      variant = "bg-yellow-500", 
+      onClick = ()=>{}, 
+      type = "button"
+    } = props;
     return (
-      <button className={`w-28 h-full p-2 rounded-md active:bg-blue-900 text-white ${variant}`}>
+      <button className={`w-28 h-full p-2 rounded-md active:bg-blue-900 text-white ${variant}`}
+        type={type}
+        onClick={() => onClick()}
+      >
   {children}
       </button>
     );
