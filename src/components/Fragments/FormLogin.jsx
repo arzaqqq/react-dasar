@@ -9,6 +9,9 @@ const FormLogin = () => {
   const handleLogin = (event) => {
     // AGAR preventDefault HALAMAN TIDAK TERREFRESH
     event.preventDefault();
+
+    console.log(event.target.email.value);
+    console.log(event.target.password.value);
     console.log("login");
   }
 
