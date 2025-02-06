@@ -33,7 +33,7 @@ const ProductPages = () => {
   return (
     <div className='flex justify-center py-5 h-full'>
       {products.map((product) => (
-            <CardProduct>
+            <CardProduct key={product.id}>
             <CardProduct.Header images={product.images}></CardProduct.Header>
           <CardProduct.Body title={product.title}>{product.desc}</CardProduct.Body>
             <CardProduct.Footer prices={product.prices}></CardProduct.Footer>
