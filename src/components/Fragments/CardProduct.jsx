@@ -5,7 +5,7 @@ import ButtonFunction from '../Elements/Button/Index';
 const CardProduct = (props) => {
   const { children } = props;
   return (
-    <div className="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow mx-2 flex flex-col">
+    <div className="w-full max-w-[325px] bg-gray-800 border border-gray-700 rounded-lg shadow mx-2 flex flex-col mb-5">
       {children}
     </div>
   );
@@ -46,13 +46,21 @@ const Header = (props) => {
 };
 
 const Footer = (props) => {
-  const { prices } = props;
+  const { prices, handleAddToCart, id } = props;
   return (
     <div className="flex items-center justify-between px-5 pb-5">
-      <span className="text-xl font-bold text-white">{prices}</span>
-      <ButtonFunction className="bg-blue-500">Add to Cart</ButtonFunction>
+      <span className="text-xl font-bold text-white">
+        {prices.toLocaleString('id-ID', { style: "currency", currency: 'IDR' })}
+      </span>
+      <ButtonFunction 
+        className="bg-blue-500" 
+        onClick={() => handleAddToCart(id)}
+      >
+        Add to Cart
+      </ButtonFunction>
     </div>
   );
+  
 };
 
 CardProduct.Header = Header;
