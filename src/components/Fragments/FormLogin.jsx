@@ -10,9 +10,15 @@ const FormLogin = () => {
     // AGAR preventDefault HALAMAN TIDAK TERREFRESH
     event.preventDefault();
 
+    // simpan ke localhost
+    localStorage.setItem("email", event.target.email.value);
+    localStorage.setItem("password", event.target.password.value);
+
     console.log(event.target.email.value);
     console.log(event.target.password.value);
     console.log("login");
+
+    window.location.href = "/products";
   }
 
   return (
