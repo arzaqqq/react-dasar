@@ -42,6 +42,15 @@ const ProductPages = () => {
     setCart ([{id:1, qty:1}]);
   }, []);
 
+useEffect(() => {
+  const sum =cart.reduce((acc, item) => {
+   const product = products.find((product) => product.id === item.id);
+   return acc + product.prices * item.qty;
+  }, 0);
+  setTotalPrice(sum);
+
+}, [cart]);
+
 
 // untuk tombol logout dan  mengahpsu isi emai dan password login
   const handleLogout = () => {
