@@ -1,5 +1,5 @@
 import React from 'react'
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 
 
 import Button from '../components/Elements/Button/Index';
@@ -35,12 +35,12 @@ const products = [
 const email = localStorage.getItem("email");
 
 const ProductPages = () => {
-  const [cart, setCart] = useState([
-    {
-      id1:1,
-      qty:1,
-    }
-  ]);
+  const [cart, setCart] = useState([]);
+  // tOTAL PRODUCT YANG DI CART
+  const [totalPrice, setTotalPrice] = useState(0);
+  useEffect(() => {
+    setCart ([{id:1, qty:1}]);
+  }, []);
 
 
 // untuk tombol logout dan  mengahpsu isi emai dan password login
@@ -111,9 +111,19 @@ const ProductPages = () => {
       </tr>
     );
   })}
+  <tr>
+    <td colSpan="3"><b>Total:</b></td>
+    <td >
+      <b>
+        Rp{""}
+      {(totalPrice).toLocaleString("id-ID", {
+      style: "currency",
+      currency: "IDR"
+    })}
+      </b>
+    </td>
+  </tr>
 </tbody>
-
-
           </table>
       </div>
 
