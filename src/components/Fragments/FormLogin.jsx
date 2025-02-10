@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useRef ,useEffect} from 'react';
 
 // Componets dari elements
 import ButtonFunction from '../Elements/Button/Index';
@@ -21,9 +21,20 @@ const FormLogin = () => {
     window.location.href = "/products";
   }
 
+  const emailRef = useRef(null);
+
+  useEffect(() => {
+  emailRef.current.focus();
+    
+  }, []);
+
   return (
     <form action="" onSubmit={handleLogin}>
-         <InputForm label="email" type="email" placeholder="email@gmail.com" name="email" />
+         <InputForm label="email" 
+                    type="email" 
+                    placeholder="email@gmail.com" 
+                    name="email"
+                    ref={emailRef} />
           <InputForm label="form" type="password" placeholder="masukan password" name="password"></InputForm>
           <ButtonFunction 
               variant='bg-blue-700 w-full'
