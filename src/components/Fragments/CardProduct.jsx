@@ -25,19 +25,19 @@ const CardProduct = (props) => {
   return (
     <div className="px-8 pb-5 flex-grow">
       <a href="#">
-        <h5 className="text-2xl font-semibold tracking-tight text-white">{title}</h5>
-        <p className="text-sm text-white mt-2">{children}</p>
+        <h5 className="text-2xl font-semibold tracking-tight text-white">{title.substring(0 ,25)}...</h5>
+        <p className="text-sm text-white mt-2">{children.substring(0, 100)}...</p>
       </a>
     </div>
   );
 };
 
 const Header = (props) => {
-  const { images } = props;
+  const { image } = props;
   return (
     <a href="#">
       <img
-        src={images}
+        src={image}
         alt="product"
         className="w-full h-64 object-cover rounded-t-lg"
       />
@@ -46,11 +46,11 @@ const Header = (props) => {
 };
 
 const Footer = (props) => {
-  const { prices, handleAddToCart, id } = props;
+  const { price, handleAddToCart, id } = props;
   return (
     <div className="flex items-center justify-between px-5 pb-5">
       <span className="text-xl font-bold text-white">
-        {prices.toLocaleString('id-ID', { style: "currency", currency: 'IDR' })}
+        {price.toLocaleString('id-ID', { style: "currency", currency: 'usd' })}
       </span>
       <ButtonFunction 
         className="bg-blue-500" 
