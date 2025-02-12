@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRef ,useEffect} from 'react';
+import { useRef ,useEffect, useState} from 'react';
 
 // Componets dari elements
 import ButtonFunction from '../Elements/Button/Index';
@@ -8,7 +8,8 @@ import InputForm from '../Elements/Input';
 import { login } from '../../services/auth-service';
 
 const FormLogin = () => {
-  const handleLogin = (event) => {
+    const [loginFailed, setLoginFailed] = useState("");
+    const handleLogin = (event) => {
     // AGAR preventDefault HALAMAN TIDAK TERREFRESH
     event.preventDefault();
 
@@ -25,7 +26,16 @@ const FormLogin = () => {
       username: event.target.username.value,
       password: event.target.password.value
     }
-    login(data);
+    login(data, (status, res) => {
+      if(status){
+        localStorage.setItem("token", res);
+        window.location.href = "/products";
+      }else{
+        setLoginFailed(res.response.data);
+        console.log(res.response.data);
+      }
+
+    });
 
   }
 
@@ -38,6 +48,7 @@ const FormLogin = () => {
 
   return (
     <form action="" onSubmit={handleLogin}>
+      
          <InputForm label="username" 
                     type="text" 
                     placeholder="ahmada jarkakan" 
@@ -48,6 +59,7 @@ const FormLogin = () => {
               variant='bg-blue-700 w-full'
               type='submit'
              >Login</ButtonFunction>
+             {loginFailed &&   <p className='text-red-500 text-center mt-5'> {loginFailed} </p>}
         </form>
   )
 }

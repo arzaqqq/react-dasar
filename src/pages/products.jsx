@@ -6,6 +6,8 @@ import Button from '../components/Elements/Button/Index';
 import ButtonFunction from '../components/Elements/Button/Index';
 import CardProduct from '../components/Fragments/CardProduct';
 import { getProducts } from '../services/product-service';
+import { use } from 'react';
+import { getUsername } from '../services/auth-service';
 
 // const products = [
 //   {
@@ -33,18 +35,28 @@ import { getProducts } from '../services/product-service';
 // ];
 
 // Mendapatkan data email dari localStorage darii hasil login
-const email = localStorage.getItem("email");
+
 
 const ProductPages = () => {
   const [cart, setCart] = useState([]);
   // tOTAL PRODUCT YANG DI CART
   const [totalPrice, setTotalPrice] = useState();
   const [products, setProducts] = useState([]);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     setCart (JSON.parse(localStorage.getItem("cart")) || []);
   }, []);
   
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token){
+      setUsername(getUsername(token));
+    }else{
+      window.location.href = "/login";
+    }
+    setUsername(getUsername(token));
+  }, [] )
 
 useEffect(() => {
   if (products.length > 0 && cart.length > 0) {
@@ -67,8 +79,8 @@ useEffect(() =>{
 
 // untuk tombol logout dan  mengahpsu isi emai dan password login
   const handleLogout = () => {
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
+    localStorage.removeItem("token");
+    
     window.location.href = "/login";
   }
 
@@ -108,7 +120,7 @@ useEffect(() =>{
   return (
     <>
     <div className='flex justify-end gap-4 h-12 bg-blue-500 text-white items-center px-10'>
-      {email}
+      {username}
       <ButtonFunction className="ml-4 h-9 flex items-center justify-center bg-black" onClick={handleLogout}>Logout</ButtonFunction>
     </div>
     <div className='flex justify-center py-5 h-full'>
