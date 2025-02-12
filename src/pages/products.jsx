@@ -9,6 +9,8 @@ import { getProducts } from '../services/product-service';
 import { use } from 'react';
 import { getUsername } from '../services/auth-service';
 
+import { useLogin } from '../hooks/useLogin';
+
 // const products = [
 //   {
 //     id:1,
@@ -42,21 +44,15 @@ const ProductPages = () => {
   // tOTAL PRODUCT YANG DI CART
   const [totalPrice, setTotalPrice] = useState();
   const [products, setProducts] = useState([]);
-  const [username, setUsername] = useState("");
+
+
+  const username = useLogin();
 
   useEffect(() => {
     setCart (JSON.parse(localStorage.getItem("cart")) || []);
   }, []);
   
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token){
-      setUsername(getUsername(token));
-    }else{
-      window.location.href = "/login";
-    }
-    setUsername(getUsername(token));
-  }, [] )
+ 
 
 useEffect(() => {
   if (products.length > 0 && cart.length > 0) {
