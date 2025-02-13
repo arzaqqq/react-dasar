@@ -1,6 +1,7 @@
 // CardProduct.js
 import React from 'react';
 import ButtonFunction from '../Elements/Button/Index';
+import { Link } from 'react-router-dom';
 
 const CardProduct = (props) => {
   const { children } = props;
@@ -33,15 +34,15 @@ const CardProduct = (props) => {
 };
 
 const Header = (props) => {
-  const { image } = props;
+  const { image, id } = props;
   return (
-    <a href="#">
+    <Link to={`/detailproduct/${id}`}>
       <img
         src={image}
         alt="product"
         className="w-full h-64 object-cover rounded-t-lg"
       />
-    </a>
+    </Link>
   );
 };
 
