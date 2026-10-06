@@ -7,7 +7,7 @@ import FormLogin from '../components/Fragments/FormLogin'
 
 
 
-const Loginpage = () => {
+export default function Loginpage() {
   return (
     <AuthLayout title="Login" type="login">
         <FormLogin/>
@@ -16,4 +16,4 @@ const Loginpage = () => {
   )
 }
 
-export default Loginpage
+// export default Loginpage

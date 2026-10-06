@@ -3,8 +3,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const AuthLayout = (props) => {
-    const {children, title, type} = props;
+const AuthLayout = ({children, title, type}) => {
+    // const {children, title, type} = props;
   return (
     <div className='flex justify-center  items-center min-h-screen'>
     <div className="w-full max-w-xs">
