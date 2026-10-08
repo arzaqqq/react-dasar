@@ -44,16 +44,12 @@ const ProductPages = () => {
   // tOTAL PRODUCT YANG DI CART
   const [totalPrice, setTotalPrice] = useState();
   const [products, setProducts] = useState([]);
-
-
   const username = useLogin();
 
   useEffect(() => {
     setCart (JSON.parse(localStorage.getItem("cart")) || []);
   }, []);
   
- 
-
 useEffect(() => {
   if (products.length > 0 && cart.length > 0) {
   const sum =cart.reduce((acc, item) => {
@@ -97,7 +93,6 @@ useEffect(() =>{
 
   // useRef
   const cartRef = useRef(JSON.parse(localStorage.getItem("cart")) || []);;
-
   const handleAddToCartRef = (id) => {
     cartRef.current = [...cartRef.current, { id, qty: 1 }];
     localStorage.setItem("cart", JSON.stringify(cartRef.current));
@@ -132,6 +127,7 @@ useEffect(() =>{
             ></CardProduct.Footer>
           </CardProduct>
       ))}
+
       </div>
       <div className="w-1/4">
           <h1 className='text-3xl font-bold text-blue-700'> Cart</h1>
