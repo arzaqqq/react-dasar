@@ -14,6 +14,8 @@ import ErrorPage from './pages/404.jsx';
 import ProductPages from './pages/products.jsx';
 import ProfilPages from './pages/profil.jsx';
 import DetailProductPages from './pages/detailProduct.jsx';
+// 
+import DarkModeContextProvider  from './context/DarkMode.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <DarkModeContextProvider>
+      <RouterProvider router={router} />
+    </DarkModeContextProvider>
   </StrictMode>,
 )
