@@ -1,42 +1,54 @@
 import React from 'react'
-import {useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef } from 'react'
 
-export default function ref() {
-    const {counter, setCounter} = useState(0);
-    const rerednder = useRef(0)
+// Mengubah nama fungsi agar tidak menggunakan reserved word 'ref'
+export default function RefComponent() {
+    // 1. Perbaikan: Gunakan array [ ] untuk useState
+    const [counter, setCounter] = useState(0);
+    const rerender = useRef(0);
 
-    // cara panggil useRef
-    // console.log(rerednder.current++)
+    // 2. Perbaikan: Tambahkan 'counter' ke dependency array agar log berjalan setiap counter berubah
     useEffect(() => {
-        console.log(rerednder.current, counter)
-    }, [])
+        console.log("Nilai saat ini:", rerender.current, counter);
+    }, [counter]); 
 
     const addCounter = () => {
-        setCounter(counter + 1)
+        setCounter(counter + 1);
     }
 
     const addRerender = () => {
-        rerednder.current + 4
+        // 3. Perbaikan: Gunakan '+=' agar nilai tersimpan
+        rerender.current += 4;
+        
+        // Catatan: Karena useRef tidak memicu re-render, 
+        // nilai di layar tidak akan langsung berubah saat tombol ini diklik.
+        // Kamu perlu memicu re-render (misal dengan addCounter) agar perubahan terlihat di UI.
     }
 
     const cekValue = () => {
-        console.log(counter, rerednder.current)
+        console.log("Cek Value:", counter, rerender.current);
     }
 
-  return (
+    return (
+        <div>
+            <h1>useState</h1>
+            <p>{counter}</p>  
+            
+            <h1>useRef</h1>
+            {/* Nilai ini hanya akan terupdate di layar jika komponen di-render ulang */}
+            <p>{rerender.current}</p>
 
-    <div>
-    <h1>useState</h1>
-    <p>{counter}</p>  
-    <h1>useRef</h1>
-    <p>{rerednder.current}</p>
-
-    <button onClick={addCounter}>
-        Add Counter
-    </button>
-    <button onClick={addRerender}>
-        Add Rerender
-    </button>
-    </div>
-  )
+            <button onClick={addCounter}>
+                Add Counter
+            </button>
+            <button onClick={addRerender}>
+                Add Rerender
+            </button>
+            
+            {/* Tombol untuk cek value di console */}
+            <button onClick={cekValue}>
+                Cek Value
+            </button>
+        </div>
+    )
 }

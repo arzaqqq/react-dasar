@@ -8,6 +8,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 //Import page yang sudah dibuat
+import App from './App.jsx';
 import Loginpage from './pages/LOGIN.JSX';
 import RegisterPage from './pages/register.jsx';
 import ErrorPage from './pages/404.jsx';
@@ -20,7 +21,8 @@ import DarkModeContextProvider  from './context/DarkMode.jsx';
 const router = createBrowserRouter([
   {
     path:"/",
-    element: <div>hai</div>,
+    element: <App/>,
+    // element: <div>hai</div>,
     errorElement:<ErrorPage/> 
   },
   {

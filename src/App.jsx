@@ -1,5 +1,6 @@
 //SEBENARNAY HALAAKN INI TIDAK DIPAAKI LAGI KARENA SUDAH KE MAIN LANGSUNG
 
+import {useId} from 'react';
 import React from 'react';
 import FormLogin from './components/Fragments/FormLogin';
 import Loginpage from './pages/LOGIN.JSX';
@@ -28,11 +29,21 @@ const ButtonCont = () => {
 };
 
 
+function InputId () {
+  const inputId = useId();
+  return (
+    <input type="text" id={inputId} placeholder="Input dengan useId" />
+);
+}
+
+
 
 function App() {
   return (
     <div className='flex justify-center  items-center min-h-screen'>
-     <RegisterPage/>
+     {/* <RegisterPage/> */}
+     <InputId/>
+     <InputId />
      
     </div>
   );

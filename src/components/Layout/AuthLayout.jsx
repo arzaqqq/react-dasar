@@ -7,7 +7,7 @@ import { DarkMode } from '../../context/DarkMode.jsx';
 
 const AuthLayout = ({children, title, type}) => {
     // const {children, title, type} = props;
-    const {isDarkMode, setIsDarkMode} = useContext(DarkMode);
+const {isDarkMode, setIsDarkMode} = useContext(DarkMode);
   return (
     
     <div className={`flex justify-center  items-center min-h-screen ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}`}>
